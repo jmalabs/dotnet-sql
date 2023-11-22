@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ProductDbContext>(options =>
-        options.UseSqlServer("Server=tcp:devcertdbserver.database.windows.net,1433;Initial Catalog=devcertdb01;Persist Security Info=False;User ID=sqladmin;Password=P@ssword01;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"));
+        options.UseSqlServer(builder.Configuration.GetConnectionString("SQLConnectionString")));
 
 
 var app = builder.Build();
